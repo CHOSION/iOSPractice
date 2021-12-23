@@ -19,9 +19,17 @@ class ViewController: UIViewController {
         
         imgOn = UIImage(named: "on.jpg")
         imgOff = UIImage(named: "off.jpg")
+        
+        imgView.image = imgOn
     }
 
     @IBAction func switchImageOnOff(_ sender: UISwitch) {
+        if sender.isOn{
+            imgView.image = imgOn
+        }
+        else{
+            imgView.image = imgOff
+        }
     }
     
 }
