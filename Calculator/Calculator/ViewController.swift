@@ -57,9 +57,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapDeleteButton(_ sender: UIButton) {
+        if(!self.displayNumber.isEmpty)
+        {
+            self.displayNumber.removeLast()
+            self.numberOutputLabel.text = self.displayNumber
+        }
     }
     
     @IBAction func tapChangeSignButton(_ sender: UIButton) {
+       
     }
     
     @IBAction func tapPlusButton(_ sender: UIButton) {

@@ -386,7 +386,7 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" title="Del">
+                                                        <state key="normal" title="⌦">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -493,7 +493,7 @@
             <size key="intrinsicContentSize" width="42" height="48"/>
         </designable>
         <designable name="WrT-mK-M5L">
-            <size key="intrinsicContentSize" width="45" height="48"/>
+            <size key="intrinsicContentSize" width="31" height="48"/>
         </designable>
         <designable name="ch0-LN-6tT">
             <size key="intrinsicContentSize" width="30" height="48"/>
