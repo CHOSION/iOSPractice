@@ -40,6 +40,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapClearButton(_ sender: UIButton) {
+        self.displayNumber = ""
+        self.firstOperand = ""
+        self.secondOperand = ""
+        self.result = ""
+        self.currentOperation = .unknown
+        self.numberOutputLabel.text="0"
     }
     
     @IBAction func tapDotButton(_ sender: UIButton) {
