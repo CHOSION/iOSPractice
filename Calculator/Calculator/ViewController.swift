@@ -55,22 +55,26 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func tapDeleteButton(_ sender: Any) {
+    @IBAction func tapDeleteButton(_ sender: UIButton) {
     }
     
-    @IBAction func tapChangeSignButton(_ sender: Any) {
+    @IBAction func tapChangeSignButton(_ sender: UIButton) {
     }
     
-    @IBAction func tapPlusButton(_ sender: Any) {
+    @IBAction func tapPlusButton(_ sender: UIButton) {
+        self.operation(.Add)
     }
     
-    @IBAction func tapMinusButton(_ sender: Any) {
+    @IBAction func tapMinusButton(_ sender: UIButton) {
+        self.operation(.Subtract)
     }
     
-    @IBAction func tapMultipleButton(_ sender: Any) {
+    @IBAction func tapMultipleButton(_ sender: UIButton) {
+        self.operation(.Multiply)
     }
     
-    @IBAction func tapDivideButton(_ sender: Any) {
+    @IBAction func tapDivideButton(_ sender: UIButton) {
+        self.operation(.Divide)
     }
     
     @IBAction func tapPercentButton(_ sender: Any) {
@@ -79,5 +83,8 @@ class ViewController: UIViewController {
     @IBAction func tapEqualButton(_ sender: Any) {
     }
     
+    func operation(_ operation: Operation){
+        
+    }
 }
 
