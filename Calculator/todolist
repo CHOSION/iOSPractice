@@ -1,0 +1,8 @@
+delete          https://github.com/codeWithCal/iOSCalculatorTutorial 의 자료를 토대로 delete 기능 구현 성공
+                하지만 처음에 한번만 적용가능하며, 이후 값에는 적용 X
+                
+percentage      백분율 기능을 한번으로 해서 구현하고 싶었으나, 텍스트 형식으로 받아와서 제약이 걸림
+                따라서 텍스트 형식의 값을 Double 형태로 변환 후, 백분위를 적용(*0.01)하는 방안을 후에 모색하기로 함
+                
+changeSign      백분율 기능과 비슷한 형식이나 여러번 적용가능하다는 점에 percentage와 다르다 (이 부분에서는 delete 버튼과 유사)
+                따라서 텍스트 형식의 값을 Double 형태로 변환 후, (*-1)하는 방안을 후에 모색하기로 함
