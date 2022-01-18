@@ -35,6 +35,8 @@ class DetailDiaryViewController: UIViewController {
         self.dateLabel.text = self.dateToString(date: diary.date)
         self.starButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(tapStarButton))
         self.starButton?.image = diary.isStar ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        self.starButton?.tintColor = .orange
+        self.navigationItem.rightBarButtonItem = self.starButton
     }
     
     private func dateToString(date: Date) -> String {
@@ -72,7 +74,13 @@ class DetailDiaryViewController: UIViewController {
     }
     
     @objc func tapStarButton() {
-        
+        guard let isStar = self.diary?.isStar else { return }
+        if isStar {
+            self.starButton?.image = UIImage(systemName: "star")
+        } else {
+            self.starButton?.image = UIImage(systemName: "star.fill")
+        }
+        self.diary?.isStar = !isStar
     }
     
     deinit {
