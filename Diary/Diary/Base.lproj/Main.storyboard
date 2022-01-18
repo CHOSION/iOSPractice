@@ -128,7 +128,7 @@
         <!--Write-->
         <scene sceneID="BJM-yd-ZHf">
             <objects>
-                <viewController id="DnT-eK-NBa" customClass="WriteDiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteDiaryViewController" id="DnT-eK-NBa" customClass="WriteDiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nqT-Qb-IvR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -302,7 +302,7 @@
         <!--Detail Diary View Controller-->
         <scene sceneID="NOm-fv-Ol5">
             <objects>
-                <viewController id="NAD-O9-kun" customClass="DetailDiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailDiaryViewController" id="NAD-O9-kun" customClass="DetailDiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Smb-D5-Jb9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -364,6 +364,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="68.5" height="32"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Edit"/>
+                                        <connections>
+                                            <action selector="tapEditButton:" destination="NAD-O9-kun" eventType="touchUpInside" id="pZJ-ak-x8r"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKk-po-vsp">
                                         <rect key="frame" x="118.5" y="0.0" width="68.5" height="32"/>
@@ -372,6 +375,9 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
                                             <color key="baseForegroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="tapDeleteButton:" destination="NAD-O9-kun" eventType="touchUpInside" id="Wie-nI-azY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -395,6 +401,11 @@
                             <constraint firstItem="ubG-dk-p1s" firstAttribute="top" secondItem="bsc-gN-jcv" secondAttribute="bottom" constant="24" id="xIs-k7-ZAn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentsTextView" destination="JmT-tf-r8N" id="6Aw-Zl-YhE"/>
+                        <outlet property="dateLabel" destination="P6H-wu-bGz" id="du2-J5-2AS"/>
+                        <outlet property="titleLabel" destination="qdL-Eh-ocC" id="ygn-jt-NfJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmT-VT-DgB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
