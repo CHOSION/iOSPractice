@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var toggleButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     // 타이머에 설정될 시간을 '초' 단위로 저장하는 property
     var duration = 60
@@ -67,6 +68,12 @@ class ViewController: UIViewController {
                 self.timerLabel.text = String(format: "%02d:%02d:%02d", hour, minutes, seconds)
                 // countdown 될때마다 progressViewr가 감소
                 self.progressView.progress = Float(self.currentSeconds)/Float(self.duration)
+                UIView.animate(withDuration: 0.5, delay: 0, animations: {
+                    self.imageView.transform = CGAffineTransform(rotationAngle: .pi)
+                })
+                UIView.animate(withDuration: 0.5, delay: 0.5, animations: {
+                    self.imageView.transform = CGAffineTransform(rotationAngle: .pi*2)
+                })
                 
                 if self.currentSeconds ?? 0 <= 0 {
                     // 타이머가 종료
@@ -86,10 +93,16 @@ class ViewController: UIViewController {
         self.timerStatus = .end
         // 취소버튼 비활성화
         self.cancelButton.isEnabled = false
-        // timerLabel과 progressView를 숨긴다.
-        self.setTimerInfoViewVisible(isHidden: true)
-        // datePicker는 표시한다.
-        self.datePicker.isHidden = false
+//        // timerLabel과 progressView를 숨긴다.
+//        self.setTimerInfoViewVisible(isHidden: true)
+//        // datePicker는 표시한다.
+//        self.datePicker.isHidden = false
+        UIView.animate(withDuration: 0.5, animations: {
+            self.timerLabel.alpha = 0
+            self.progressView.alpha = 0
+            self.datePicker.alpha = 1
+            self.imageView.transform = .identity
+        })
         // toggleButton의 상태는 selected 상태 X (normal) -> Start
         self.toggleButton.isSelected = false
         self.timer?.cancel()
@@ -115,10 +128,11 @@ class ViewController: UIViewController {
         case .end:
             self.currentSeconds = self.duration
             self.timerStatus = .start
-            // timerLabel과 progressView가 표시되게 한다.
-            self.setTimerInfoViewVisible(isHidden: false)
-            // datePicker는 사라지게 한다.
-            self.datePicker.isHidden = true
+            UIView.animate(withDuration: 0.5, animations: {
+                self.timerLabel.alpha = 1
+                self.progressView.alpha = 1
+                self.datePicker.alpha = 0
+            })
             // toggleButton의 상태는 selected 상태 -> Pause
             self.toggleButton.isSelected = true
             // 취소버튼 활성화
