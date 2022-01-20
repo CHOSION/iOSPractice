@@ -9,6 +9,7 @@ import UIKit
 
 protocol DetailDiaryViewController: AnyObject {
     func didSelectDelete(indexPath: IndexPath)
+    func didSelectStar(indexPath: IndexPath, isStar: Bool)
 }
 
 class DetailDiaryViewController: UIViewController {
@@ -75,12 +76,15 @@ class DetailDiaryViewController: UIViewController {
     
     @objc func tapStarButton() {
         guard let isStar = self.diary?.isStar else { return }
+        guard let indexPath = self.indexPath else { return }
+
         if isStar {
             self.starButton?.image = UIImage(systemName: "star")
         } else {
             self.starButton?.image = UIImage(systemName: "star.fill")
         }
         self.diary?.isStar = !isStar
+        self.delegate?.didSelectStar(indexPath: isStar, isStar: self.diary?.isStar ?? false)
     }
     
     deinit {
