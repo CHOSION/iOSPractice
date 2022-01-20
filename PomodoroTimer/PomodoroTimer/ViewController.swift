@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 enum TimerStatus {
     case start
@@ -70,6 +71,8 @@ class ViewController: UIViewController {
                 if self.currentSeconds ?? 0 <= 0 {
                     // 타이머가 종료
                     self.stopTimer()
+                    // iphonedev.wiki에서 확인가능
+                    AudioServicesPlaySystemSound(1005)
                 }
             })
             self.timer?.resume()
