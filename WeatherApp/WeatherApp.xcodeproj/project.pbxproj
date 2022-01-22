@@ -14,6 +14,7 @@
 		E0BCDD04279BD25200C15EBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0BCDD03279BD25200C15EBB /* Assets.xcassets */; };
 		E0BCDD07279BD25200C15EBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BCDD05279BD25200C15EBB /* LaunchScreen.storyboard */; };
 		E0BCDD0F279BDA4500C15EBB /* WeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BCDD0E279BDA4500C15EBB /* WeatherInformation.swift */; };
+		E0BCDD11279BE3CE00C15EBB /* errorMassage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BCDD10279BE3CE00C15EBB /* errorMassage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E0BCDD06279BD25200C15EBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0BCDD08279BD25200C15EBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0BCDD0E279BDA4500C15EBB /* WeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInformation.swift; sourceTree = "<group>"; };
+		E0BCDD10279BE3CE00C15EBB /* errorMassage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = errorMassage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				E0BCDD05279BD25200C15EBB /* LaunchScreen.storyboard */,
 				E0BCDD08279BD25200C15EBB /* Info.plist */,
 				E0BCDD0E279BDA4500C15EBB /* WeatherInformation.swift */,
+				E0BCDD10279BE3CE00C15EBB /* errorMassage.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0BCDD11279BE3CE00C15EBB /* errorMassage.swift in Sources */,
 				E0BCDCFF279BD25100C15EBB /* ViewController.swift in Sources */,
 				E0BCDD0F279BDA4500C15EBB /* WeatherInformation.swift in Sources */,
 				E0BCDCFB279BD25100C15EBB /* AppDelegate.swift in Sources */,
