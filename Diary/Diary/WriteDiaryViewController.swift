@@ -10,6 +10,7 @@ import UIKit
 // Delegate 정의 -> Delegate를 통해 일기장 리스트 화면에 일기가 작성된 다이어리 객체 전달
 // Protocol 정의
 protocol WriteDiaryViewDelegate: AnyObject {
+    // 메서드 정의_파라미터에 Diary 객체 전달
     func didSelectRegister(diary: Diary)
 }
 
