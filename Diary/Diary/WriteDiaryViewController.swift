@@ -7,6 +7,12 @@
 
 import UIKit
 
+// Delegate 정의 -> Delegate를 통해 일기장 리스트 화면에 일기가 작성된 다이어리 객체 전달
+// Protocol 정의
+protocol WriteDiaryViewDelegate: AnyObject {
+    func didSelectRegister(diary: Diary)
+}
+
 class WriteDiaryViewController: UIViewController {
 
     @IBOutlet weak var titleTextField: UITextField!
@@ -18,6 +24,8 @@ class WriteDiaryViewController: UIViewController {
     private let datePicker = UIDatePicker()
     // Date를 저장하는 property
     private var diaryDate: Date?
+    // WriteDiaryViewDelegate property 정의
+    weak var delegate: WriteDiaryViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +71,16 @@ class WriteDiaryViewController: UIViewController {
     }
     
     @IBAction func tapConfirmButton(_ sender: UIBarButtonItem) {
+        // 일기 작성하고 나서 등록버튼을 눌렀을 때, Diary 객체 생성
+        // delegate에 정의한 didSelectRegistar 메서드 호출
+        // 메서드 파라미터에 생성된 다이어리 객체 전달
+        guard let title = self.titleTextField.text else { return }
+        guard let contents = self.contentsTextView.text else { return }
+        guard let date = self.diaryDate else { return }
+        let diary = Diary(title: title, contents: contents, date: date, isStar: false)
+        self.delegate?.didSelectRegister(diary: diary)
+        // 화면을 일기장 화면으로 이동 (전 화면으로 이동)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // dateTextField에 datePicker 기능 적용_2_1 -> addTarget에 호출될 메서드
