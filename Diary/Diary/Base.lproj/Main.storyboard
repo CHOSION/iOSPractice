@@ -111,7 +111,7 @@
         <!--일기 작성-->
         <scene sceneID="ZqE-3v-4I0">
             <objects>
-                <viewController id="bGZ-wM-o2N" customClass="WriteDiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteDiaryViewController" id="bGZ-wM-o2N" customClass="WriteDiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dPT-m8-Lc5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -285,7 +285,7 @@
         <!--Diary Detail View Controller-->
         <scene sceneID="BSu-eT-1jL">
             <objects>
-                <viewController id="wfM-Pk-RcO" customClass="DiaryDetailViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiaryDetailViewController" id="wfM-Pk-RcO" customClass="DiaryDetailViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zlr-lP-Iye">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,6 +347,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Edit"/>
+                                        <connections>
+                                            <action selector="tapEditButton:" destination="wfM-Pk-RcO" eventType="touchUpInside" id="ilm-7P-QqA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myc-bG-Pet">
                                         <rect key="frame" x="80" y="0.0" width="45" height="30"/>
@@ -354,6 +357,9 @@
                                         <state key="normal" title="Delete">
                                             <color key="titleColor" systemColor="systemRedColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tapDeleteButton:" destination="wfM-Pk-RcO" eventType="touchUpInside" id="x8p-Ir-cl5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -377,6 +383,11 @@
                             <constraint firstItem="Ogi-QT-CXA" firstAttribute="top" secondItem="pYV-Rv-VF0" secondAttribute="bottom" constant="12" id="qzO-vm-HAS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentsTextView" destination="Ogi-QT-CXA" id="WKd-QZ-Lwj"/>
+                        <outlet property="datelabel" destination="CWc-Ar-fuj" id="wYC-sm-O1t"/>
+                        <outlet property="titleLabel" destination="PTS-SP-7vn" id="HDb-c9-09L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5E-pe-6xW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

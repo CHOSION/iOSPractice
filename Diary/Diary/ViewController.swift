@@ -24,6 +24,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.configureCollectionView()
         self.loadDiaryList()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(editDiaryNotification(_:)),
+            name: NSNotification.Name("editDiary"),
+            object: nil
+        )
     }
     
     // self.diaryList에 추가된 일기를 보여주기
@@ -35,6 +41,16 @@ class ViewController: UIViewController {
         // extension ViewController: UICollectionViewDataSource
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+    }
+    
+    @objc func editDiaryNotification(_ notification: Notification) {
+        guard let diary = notification.object as? Diary else { return }
+        guard let row = notification.userInfo?["indexPath.row"] as? Int else { return }
+        self.diaryList[row] = diary
+        self.diaryList = self.diaryList.sorted(by: {
+            $0.date.compare($1.date) == .orderedDescending
+        })
+        self.collectionView.reloadData()
     }
     
     // writeDiaryViewController > tapConfirmButton의 delegate를 통해 작성된 diary가 전달될 준비가 되었을 때, viewController로 이동해 받을 준비를 한다.
@@ -127,6 +143,21 @@ extension ViewController:UICollectionViewDelegateFlowLayout {
     }
 }
 
+// 일기장 리스트 화면에서 일기 선택시 일기 상세화면으로 이동하기_4 (이전에 storyboard에 id)
+extension ViewController: UICollectionViewDelegate {
+    // didSelectItemAt: 특정 셀이 선택되었음을 알리는 메서드 -> DiaryDetailViewController가 push되도록 구현
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // storyboard에 있는 ViewController를 인스턴스화, DiaryDetailViewController 로 타입캐스팅
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "DiaryDetailViewController") as? DiaryDetailViewController else { return }
+        // 선택한 일기가 무엇인지 다이어리 상수에 대입
+        let diary = self.diaryList[indexPath.row]
+        viewController.diary = diary
+        viewController.indexPath = indexPath
+        viewController.delegate = self
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
 extension ViewController: WriteDiaryViewDelegate {
     // 일기가 작성이 될 때, didSelectRegister 메서드 파라미터를 통해 작성된 일기의 내용이 담긴 다이어리 객체가 전달
     func didSelectRegister(diary: Diary) {
@@ -141,5 +172,13 @@ extension ViewController: WriteDiaryViewDelegate {
         })
         // 일기를 추가할 때마다 collectionView에 일기 목록이 표시된다.
         self.collectionView.reloadData()
+    }
+}
+
+// 일기장 삭제기능 delegate 확장
+extension ViewController: DiaryDetailViewDelegate {
+    func didSelectDelegate(indexPath: IndexPath) {
+        self.diaryList.remove(at: indexPath.row)
+        self.collectionView.deleteItems(at: [indexPath])
     }
 }
