@@ -34,6 +34,11 @@ class DiaryDetailViewController: UIViewController {
         // 일기장 리스트 화면에서 일기 선택시 일기 상세화면으로 이동하기_3
         // 일기장 리스트 화면에서 일기장을 선택했을 때, 다이어리 프로퍼티에 다이어리 객체 넘겨주고 일기장 상세화면에 일기장 제목과 내용 날짜가 표시된다.
         self.configureView()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(starDiaryNotification(_:)),
+            name: NSNotification.Name("starDiary"),
+            object: nil)
     }
     
     // 일기장 목록에서 일기 선택시 일기 상세화면으로 이동하기_2
@@ -59,10 +64,21 @@ class DiaryDetailViewController: UIViewController {
     
     @objc func editDiaryNotification(_ notification: Notification) {
         guard let diary = notification.object as? Diary else { return }
-        guard let row = notification.userInfo?["indexPath.row"] as? Int else { return }
+        // guard let row = notification.userInfo?["indexPath.row"] as? Int else { return }
         self.diary = diary
         self.configureView()
      }
+    
+    @objc func starDiaryNotification(_ notification: Notification) {
+        guard let starDiary = notification.object as? [String: Any] else { return }
+        guard let isStar = starDiary["isStar"] as? Bool else { return }
+        guard let uuidString = starDiary["uuidString"] as? String else { return }
+        guard let diary = self.diary else { return }
+        if diary.uuidString == uuidString {
+            self.diary?.isStar = isStar
+            self.configureView()
+        }
+    }
     
     // 수정버튼 누를 때, WriteDiaryViewController 화면이 push되도록 구현
     @IBAction func tapEditButton(_ sender: UIButton) {
@@ -81,15 +97,21 @@ class DiaryDetailViewController: UIViewController {
     
     // 삭제버튼 누를 때,tapDeleteButton 함수 구현
     @IBAction func tapDeleteButton(_ sender: UIButton) {
-        guard let indexPath = self.indexPath else { return }
+        // guard let indexPath = self.indexPath else { return }
+        guard let uuidString = self.diary?.uuidString else { return }
         // self.delegate?.didSelectDelegate(indexPath: indexPath)
-        NotificationCenter.default.post(name: NSNotification.Name("deleteDiary"), object: indexPath, userInfo: nil)
+        NotificationCenter.default.post(
+            name: NSNotification.Name("deleteDiary"),
+            object: uuidString,
+            // object: indexPath,
+            userInfo: nil
+        )
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc func tapStarButton() {
         guard let isStar = self.diary?.isStar else { return }
-        guard let indexPath = self.indexPath else { return }
+        // guard let indexPath = self.indexPath else { return }
 
         if isStar {
             self.starButton?.image = UIImage(systemName: "star")
@@ -102,7 +124,8 @@ class DiaryDetailViewController: UIViewController {
             object: [
                 "diary": self.diary,
                 "isStar": self.diary?.isStar ?? false,
-                "indexPath": indexPath
+                // "indexPath": indexPath
+                "uuidString": diary?.uuidString
             ],
             userInfo: nil
         )

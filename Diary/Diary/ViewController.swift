@@ -93,6 +93,7 @@ class ViewController: UIViewController {
         // 일기들을 userDefaults의 user dictionary 배열 형태로 저장
         let date = self.diaryList.map {
             [
+                "uuidString": $0.uuidString,
                 "title": $0.title,
                 "contents": $0.contents,
                 "date": $0.date,
@@ -113,11 +114,12 @@ class ViewController: UIViewController {
         // 불러온 데이터를 diaryList에 넣어주기
         // Diary 타입이 되도록 매핑
         self.diaryList = data.compactMap{
+            guard let uuidString = $0["uuidString"] as? String else {return nil}
             guard let title = $0["title"] as? String else { return nil }
             guard let contents = $0["contents"] as? String else { return nil}
             guard let date = $0["date"] as? Date else { return nil}
             guard let isStar = $0["isStar"] as? Bool else { return nil }
-            return Diary(title: title, contents: contents, date: date, isStar: isStar)
+            return Diary(uuidString: uuidString, title: title, contents: contents, date: date, isStar: isStar)
         }
         // 일기를 최신 날짜순으로 불러오기
         self.diaryList = self.diaryList.sorted(by: {
