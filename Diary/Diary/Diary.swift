@@ -9,6 +9,7 @@ import Foundation
 
 // Diary 구조체 생성
 struct Diary {
+    var uuidString: String
     var title: String
     var contents: String
     var date: Date

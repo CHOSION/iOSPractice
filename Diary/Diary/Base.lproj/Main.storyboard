@@ -111,7 +111,7 @@
         <!--일기 작성-->
         <scene sceneID="ZqE-3v-4I0">
             <objects>
-                <viewController storyboardIdentifier="WriteDiaryViewController" id="bGZ-wM-o2N" customClass="WriteDiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bGZ-wM-o2N" customClass="WriteDiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dPT-m8-Lc5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -263,6 +263,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="80"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="lgA-fj-6pP" id="hhb-Pa-6X5"/>
+                                            <outlet property="titleLabel" destination="ebC-lJ-qDS" id="0mV-E8-zS9"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

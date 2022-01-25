@@ -109,12 +109,13 @@ class WriteDiaryViewController: UIViewController {
         guard let title = self.titleTextField.text else { return }
         guard let contents = self.contentsTextView.text else { return }
         guard let date = self.diaryDate else { return }
-        let diary = Diary(title: title, contents: contents, date: date, isStar: false)
         
         switch self.diaryEditorMode {
         case .new:
+            let diary = Diary(title: title, contents: contents, date: date, isStar: false)
             self.delegate?.didSelectRegister(diary: diary)
-        case let .edit(indexPath, _):
+        case let .edit(indexPath, diary):
+            let diary = Diary(title: title, contents: contents, date: date, isStar: diary.isStar)
             NotificationCenter.default.post(
                 name: NSNotification.Name("editDiary"),
                 object: diary,
@@ -124,7 +125,7 @@ class WriteDiaryViewController: UIViewController {
             )
         }
         
-        self.delegate?.didSelectRegister(diary: diary)
+        // self.delegate?.didSelectRegister(diary: diary)
         // 화면을 일기장 화면으로 이동 (전 화면으로 이동)
         self.navigationController?.popViewController(animated: true)
     }
