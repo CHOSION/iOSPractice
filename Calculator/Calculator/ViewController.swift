@@ -109,15 +109,20 @@ class ViewController: UIViewController {
         self.operation(self.currentOperation)
     }
     
+    // 계산 담당하는 함수
+    // Operation 열거형 값을 함수 파라미터 값으로 받는다.
     func operation(_ operation: Operation){
         if self.currentOperation != .unknown {
             if !self.displayNumber.isEmpty {
                 self.secondOperand = self.displayNumber
                 self.displayNumber = ""
                 
+                // 첫번째 피연산자와 두번째 피연산자 프로퍼티를 Double형으로 변환
                 guard let firstOperand = Double(self.firstOperand) else { return }
                 guard let secondOperand = Double(self.secondOperand) else { return }
                 
+                // 스위치문으로 currentOperation 프로퍼티 값에 따라 연산해주는 코드 작성
+                // 첫번째 피연산자와 두번째 피연산자 둘 다 적용되어야 하는 연산자만
                 switch self.currentOperation {
                 case .Add:
                     self.result = "\(firstOperand + secondOperand)"
@@ -131,17 +136,26 @@ class ViewController: UIViewController {
                     break
                 }
                 
+                // result.truncatingRemainder(dividingBy: 1) -> 1로 나눈 나머지 값
+                // result.truncatingRemainder(dividingBy: 1) == 0 일때는 정수형으로 표시[ "\(Int(result))" ]
                 if let result = Double(self.result), result.truncatingRemainder(dividingBy: 1) == 0 {
                     self.result = "\(Int(result))"
                 }
+                // 연산의 결과값을 다시 첫번째 피연산자에 넣어서 다음 연산에 사용되게 해야한다
+                // 첫번째 피연산자 프로퍼티에 결과값을 저장
                 self.firstOperand = self.result
                 self.numberOutputLabel.text = self.result
             }
-            
+            // if 구문 밖에서 함수 파라미터로 전달한 operation 값을 currentOperation에 저장
             self.currentOperation = operation
-        } else {
+        }
+        // unknown인 경우 계산기가 초기화된 상태에서 사용자가 첫번째 피연산자와 연산자를 선택한 상태
+        else {
+            // 화면에 표시된 숫자값이 첫번째 피연산자로 저장
             self.firstOperand = self.displayNumber
+            // currentOperation에는 선택한 연산자 저장
             self.currentOperation = operation
+            // 빈 문자열로 초기화
             self.displayNumber = ""
         }
     }
