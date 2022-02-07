@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    // 모든 숫자버튼들을 커넥트(드래그)
     @IBAction func tapNumberButton(_ sender: UIButton) {
         
         guard let numberValue = sender.title(for: .normal) else { return }
