@@ -9,11 +9,12 @@
 
 import UIKit
 
-// @IBDesignable: 변경된 설정값을 스토리보드상에 실시간으로 확인
+// @IBDesignable: 변경된 설정값을 스토리보드상에 실시간으로 확인 가능
 @IBDesignable
 class RoundButton: UIButton {
     // isRound 프로퍼티 선언 (Bool 초기값은 false)
     // @IBInspectable: 스토리보드에서도 isRound 프로퍼티 설정값 변경 가능
+    // @IBInspectable: Custom View 설정을 스토리보드에서 변경 가능
     @IBInspectable var isRound: Bool = false {
         // 연산 프로퍼티
         didSet {
