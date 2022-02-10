@@ -8,6 +8,8 @@
 import Foundation
 
 struct Task {
-    var title: String
+    // 할 일
+    var title: String\
+    // 할 일의 수행 여부
     var done: Bool
 }
