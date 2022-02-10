@@ -9,7 +9,7 @@ import Foundation
 
 struct Task {
     // 할 일
-    var title: String\
+    var title: String
     // 할 일의 수행 여부
     var done: Bool
 }

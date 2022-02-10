@@ -11,8 +11,11 @@ class ViewController: UIViewController {
     
     // Table View @IBOutlet weak var 등록
     @IBOutlet weak var tableView: UITableView!
+    // Edit Button @IBOutlet weak var 등록
+    // 재사용을 위한 strong 변수 고정
     @IBOutlet var editButton: UIBarButtonItem!
     
+    // 옵셔널
     var doneButton: UIBarButtonItem?
 
     var tasks = [Task]() {
@@ -83,6 +86,7 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // 할 일 저장 (딕셔너리 형태로 저장)
     func saveTasks() {
         let data = self.tasks.map {
             [
@@ -90,12 +94,15 @@ class ViewController: UIViewController {
                 "done": $0.done
             ]
         }
+        // UserDefaults에 접근
         let userDefaults = UserDefaults.standard
         userDefaults.set(data, forKey: "tasks")
     }
     
     func loadTasks() {
         let userDefaults = UserDefaults.standard
+        // 저장된 data load하기
+        // guard 문으로 옵셔널 바인딩
         guard let data = userDefaults.object(forKey: "tasks") as? [[String: Any]] else { return }
         self.tasks = data.compactMap {
             guard let title = $0["title"] as? String else { return nil }
