@@ -33,6 +33,8 @@ class ViewController: UIViewController {
         self.loadTasks()
     }
     
+    // objective-c 와의 호환성
+    // swift에서 정의한 메서드를 objective-c에서도 사용가능하도록 설정
     @objc func doneButtonTap() {
         self.navigationItem.leftBarButtonItem = self.editButton
         self.tableView.setEditing(false, animated: true)
@@ -40,6 +42,7 @@ class ViewController: UIViewController {
     
     // Edit Button @IBAction Func
     @IBAction func tapEditButton(_ sender: UIBarButtonItem) {
+        // 테이블뷰가 비어있으면 편집모드 필요 X
         guard !self.tasks.isEmpty else { return }
         self.navigationItem.leftBarButtonItem = self.doneButton
         self.tableView.setEditing(true, animated: true)
@@ -136,6 +139,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // 삭제기능 구현
         self.tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         
