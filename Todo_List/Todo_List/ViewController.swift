@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     // Table View @IBOutlet weak var 등록
     @IBOutlet weak var tableView: UITableView!
+    
     // Edit Button @IBOutlet weak var 등록
     // 재사용을 위한 strong 변수 고정
     @IBOutlet var editButton: UIBarButtonItem!
@@ -53,18 +54,20 @@ class ViewController: UIViewController {
         
         // alert 표시 _ 앱 또는 기기 상태의 중요한 상태를 주로 알림
         // 제목, 메세지, 하나 이상의 버튼 및 입력을 수집하기 위한 text field로 구성
-        let alert = UIAlertController(title: "To do...", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "To do ...", message: nil, preferredStyle: .alert)
         
         // alert의 register button 추가
         // 핸들러에 클로져 정의 _ 파라미터에 정의된 클로져 함수 호출
         // 버튼 눌렀을 때 실행할 행동들을 정의
         let registerButton = UIAlertAction(title: "submit", style: .default, handler: { [weak self] _ in
-            // 클로져 선언부에 캡쳐목록 정의(클로져는 참조타입 -> self의 경우 강한 순환참조(AIC의 단점 -> 두개의 객체가 상호참조하는 경우 발생) 발생)
+            
+            // 클로져 선언부에 캡쳐목록 정의(클로져는 참조타입 -> self의 경우 강한 순환참조(_두개의 객체가 상호참조하는 경우 발생) 발생)
             // 강한 순환잠조의 경우, 연관된 객체들은 레퍼런스가 0에 도달X, 메모리 누수 발생
             // 클로져 선언부 대괄호 안에 weak self 선언 작성 -> 캡쳐목록 정의로 강한 순환참조 방지 (unknown으로 선언하는 방식도 존재)
             
             // 텍스트필드에 등록된 값 가져오기
             guard let title = alert.textFields?[0].text else { return }
+            
             // 테이블뷰에 등록된 할 일 표기
             // Task.swift 정의
             let task = Task(title: title, done: false)
