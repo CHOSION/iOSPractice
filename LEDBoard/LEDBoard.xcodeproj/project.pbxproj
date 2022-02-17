@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0A367C927BE17F300BDC04E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A367C827BE17F300BDC04E /* SettingViewController.swift */; };
 		E0A5E48F27BE0BD500E1D2F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5E48E27BE0BD500E1D2F8 /* AppDelegate.swift */; };
 		E0A5E49127BE0BD500E1D2F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5E49027BE0BD500E1D2F8 /* SceneDelegate.swift */; };
 		E0A5E49327BE0BD500E1D2F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5E49227BE0BD500E1D2F8 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E0A367C827BE17F300BDC04E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		E0A5E48B27BE0BD500E1D2F8 /* LEDBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LEDBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A5E48E27BE0BD500E1D2F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A5E49027BE0BD500E1D2F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				E0A5E49727BE0BD500E1D2F8 /* Assets.xcassets */,
 				E0A5E49927BE0BD500E1D2F8 /* LaunchScreen.storyboard */,
 				E0A5E49C27BE0BD500E1D2F8 /* Info.plist */,
+				E0A367C827BE17F300BDC04E /* SettingViewController.swift */,
 			);
 			path = LEDBoard;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				E0A5E49327BE0BD500E1D2F8 /* ViewController.swift in Sources */,
 				E0A5E48F27BE0BD500E1D2F8 /* AppDelegate.swift in Sources */,
 				E0A5E49127BE0BD500E1D2F8 /* SceneDelegate.swift in Sources */,
+				E0A367C927BE17F300BDC04E /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
