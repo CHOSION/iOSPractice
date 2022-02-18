@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E03F1B2E27BF51290001F18E /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F1B2D27BF51290001F18E /* ErrorMessage.swift */; };
 		E0A97FB627BE4E430021D311 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A97FB527BE4E430021D311 /* AppDelegate.swift */; };
 		E0A97FB827BE4E430021D311 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A97FB727BE4E430021D311 /* SceneDelegate.swift */; };
 		E0A97FBA27BE4E430021D311 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A97FB927BE4E430021D311 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E03F1B2D27BF51290001F18E /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		E0A97FB227BE4E430021D311 /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A97FB527BE4E430021D311 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A97FB727BE4E430021D311 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				E0A97FC027BE4E440021D311 /* LaunchScreen.storyboard */,
 				E0A97FC327BE4E440021D311 /* Info.plist */,
 				E0A97FC927BE521A0021D311 /* WeatherInformation.swift */,
+				E03F1B2D27BF51290001F18E /* ErrorMessage.swift */,
 			);
 			path = weatherApp;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				E0A97FBA27BE4E430021D311 /* ViewController.swift in Sources */,
 				E0A97FCA27BE521A0021D311 /* WeatherInformation.swift in Sources */,
+				E03F1B2E27BF51290001F18E /* ErrorMessage.swift in Sources */,
 				E0A97FB627BE4E430021D311 /* AppDelegate.swift in Sources */,
 				E0A97FB827BE4E430021D311 /* SceneDelegate.swift in Sources */,
 			);
